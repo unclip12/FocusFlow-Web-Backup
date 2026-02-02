@@ -7,20 +7,16 @@ import "firebase/compat/messaging";
 import { StudyMaterial, MaterialChatMessage, DayPlan, MentorMessage, MentorMemory, UserProfile, KnowledgeBaseEntry, TimeLogEntry, AISettings, RevisionSettings, DailyTracker, AppSettings, FMGEEntry, StudyEntry } from "../types";
 import { notifySyncStart, notifySyncEnd } from "./syncService";
 
-// Declare process for TypeScript compatibility if types aren't loaded
-declare const process: any;
-
 // --- CONFIGURATION ---
 
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY, // Reads from the .env file
-  authDomain: "arsh-projects.firebaseapp.com",
-  databaseURL: "https://arsh-projects-default-rtdb.firebaseio.com",
-  projectId: "arsh-projects",
-  storageBucket: "arsh-projects.firebasestorage.app",
-  messagingSenderId: "666347925472",
-  appId: "1:666347925472:web:2bb83fee081ccd2bc44585",
-  measurementId: "G-5MZ7M91X5Q"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 // Initialize Firebase (Compat)
